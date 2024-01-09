@@ -16,7 +16,7 @@ app.use(function(req, res, next) {
   });
   
 app.use(cors({
-    origin: ["http://localhost:5173", "http://localhost:3000", "https://quanlydoanviencaptinh.vercel.app"],
+    origin: ["http://localhost:5173", "http://localhost:3000", "https://quanlydoanvien.vercel.app"],
     credentials: true,
 }));
 // app.use(express.json());
@@ -59,11 +59,11 @@ const path = require("path");
 const basePath = '';
 
 // //cấu hình chạy reactjs trên node server
-// app.use(basePath + "/", express.static(path.resolve(__dirname + "/dist")));
+app.use(basePath + "/", express.static(path.resolve(__dirname + "/public")));
 
-// app.get("*", (request, response) => {
-//   response.sendFile(path.resolve(__dirname + "/dist/index.html"));
-// });
+app.get("*", (request, response) => {
+  response.sendFile(path.resolve(__dirname + "/public/index.html"));
+});
 app.listen(port, () => {
     console.log('server running ', port)
 });
