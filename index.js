@@ -16,7 +16,7 @@ app.use(function(req, res, next) {
   });
   
 app.use(cors({
-    origin: ["http://localhost:5173", "http://localhost:3000"],
+    origin: ["http://localhost:5173", "http://localhost:3000", "https://quanlydoanvien.vercel.app"],
     credentials: true,
 }));
 // app.use(express.json());
@@ -69,7 +69,7 @@ app.listen(port, () => {
 });
 
 mongoose.set('strictQuery', true);
-mongoose.connect("mongodb://localhost:27017/quanlydoanvien",{
+mongoose.connect("mongodb+srv://vuvantinh121123:vuvantinh1@cluster0.6h7gby9.mongodb.net/?retryWrites=true&w=majority",{
     useNewUrlParser: true,
     useUnifiedTopology: true
 }, (err) => {
