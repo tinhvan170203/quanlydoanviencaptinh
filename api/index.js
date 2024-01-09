@@ -63,22 +63,22 @@ app.get('/', (req, res)=> {
     res.send('hello')
 })
 // //cấu hình chạy reactjs trên node server
-// app.use(basePath + "/", express.static(path.resolve(__dirname + "/public")));
+app.use(basePath + "/", express.static(path.resolve(__dirname + "./dist")));
 
-// app.get("*", (request, response) => {
-//   response.sendFile(path.resolve(__dirname + "/public/index.html"));
-// });
-// app.listen(port, () => {
-//     console.log('server running ', port)
-// });
+app.get("*", (request, response) => {
+  response.sendFile(path.resolve(__dirname + "./dist/index.html"));
+});
+app.listen(port, () => {
+    console.log('server running ', port)
+});
 
-// mongoose.set('strictQuery', true);
-// mongoose.connect("mongodb+srv://vuvantinh121123:vuvantinh1@cluster0.6h7gby9.mongodb.net/?retryWrites=true&w=majority",{
-//     useNewUrlParser: true,
-//     useUnifiedTopology: true
-// }, (err) => {
-//     if(err){
-//         console.log(err)
-//     }
-//     console.log('kết nối db thành công')
-// })
+mongoose.set('strictQuery', true);
+mongoose.connect("mongodb+srv://vuvantinh121123:vuvantinh1@cluster0.6h7gby9.mongodb.net/?retryWrites=true&w=majority",{
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+}, (err) => {
+    if(err){
+        console.log(err)
+    }
+    console.log('kết nối db thành công')
+})
