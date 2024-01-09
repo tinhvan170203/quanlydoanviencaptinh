@@ -20,5 +20,6 @@
     "start": "nodemon index.js"
   },
   "author": "vũ văn tính",
-  "license": "ISC"
+  "license": "ISC",
+  "type": "module"
 }
