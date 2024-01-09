@@ -1,11 +1,15 @@
 {
     "version": 2,
     "name": "phanmemquanlydoanvien",
-
+    "builds": [
+        {
+            "src": "./index.js"
+        }
+    ],
     "routes": [
         {
             "src": "/(.*)",
-            "dest": "./index.js"
+            "dest": "/"
         }
     ]
 }
