@@ -58,6 +58,8 @@ app.use('/thong-ke', thongkeRoute);
 // app.use('/api', donviRoute);
 const path = require("path");
 const basePath = '';
+const auth = require('./controllers/auth');
+app.post("/auth/login", auth.login )
 
 app.get('/', (req, res)=> {
     res.send('hello')
