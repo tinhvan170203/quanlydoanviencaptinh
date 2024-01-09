@@ -16,7 +16,7 @@ app.use(function(req, res, next) {
   });
   
 app.use(cors({
-    origin: ["http://localhost:5173", "http://localhost:3000", "https://quanlydoanvien.vercel.app"],
+    origin: ["http://localhost:5173", "http://localhost:3000", "https://quanlydoanviencaptinh.vercel.app"],
     credentials: true,
 }));
 // app.use(express.json());
