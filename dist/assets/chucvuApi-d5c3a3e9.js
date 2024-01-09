@@ -1,0 +1,1 @@
+import{n as t}from"./index-2b00a054.js";const n={getChucvus(u){const c="/chuc-vu/fetch";return t.get(c,{params:u})},addChucvu(u){const c="/chuc-vu/add";return t.post(c,u)},editChucvu(u){const c=`/chuc-vu/edit/${u.id_edit}`;return t.put(c,u)},deleteChucvu(u,c){const e=`/chuc-vu/delete/${u}`;return t.delete(e,{params:c})}};export{n as c};
