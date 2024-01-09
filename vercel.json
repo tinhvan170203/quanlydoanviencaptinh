@@ -1,12 +1,5 @@
 {
     "version": 2,
     "name": "phanmemquanlydoanvien",
-
-    "rewrites": [{ "source": "/api/(.*)", "destination": "/api" }],
-    "routes": [
-        {
-            "src": "/(.*)",
-            "dest": "/"
-        }
-    ]
+    "rewrites": [{ "source": "/api/(.*)", "destination": "/api" }]
 }
