@@ -58,8 +58,7 @@ app.use('/thong-ke', thongkeRoute);
 // app.use('/api', donviRoute);
 const path = require("path");
 const basePath = '';
-const auth = require('./controllers/auth');
-app.get("/auth/login", auth.login )
+
 
 app.get('/', (req, res)=> {
     res.send('hello')
@@ -84,3 +83,5 @@ mongoose.connect("mongodb+srv://vuvantinh121123:vuvantinh1@cluster0.6h7gby9.mong
     }
     console.log('kết nối db thành công')
 })
+
+module.exports = app;
