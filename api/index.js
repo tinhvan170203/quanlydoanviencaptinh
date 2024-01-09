@@ -59,10 +59,10 @@ const path = require("path");
 const basePath = '';
 
 // //cấu hình chạy reactjs trên node server
-app.use(basePath + "/", express.static(path.resolve(__dirname + "/public")));
+app.use(basePath + "/", express.static(path.resolve(__dirname + "/dist")));
 
 app.get("*", (request, response) => {
-  response.sendFile(path.resolve(__dirname + "/public/index.html"));
+  response.sendFile(path.resolve(__dirname + "/dist/index.html"));
 });
 app.listen(port, () => {
     console.log('server running ', port)
