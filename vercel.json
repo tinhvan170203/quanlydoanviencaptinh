@@ -3,7 +3,8 @@
     "name": "phanmemquanlydoanvien",
     "builds": [
         {
-            "src": "./index.js"
+            "src": "./index.js",
+            "use": "@vercel/nodejs"
         }
     ],
     "routes": [
