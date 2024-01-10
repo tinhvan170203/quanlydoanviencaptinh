@@ -21,5 +21,6 @@
   },
   "author": "vũ văn tính",
   "license": "ISC",
+  "type": "module",
   "proxy": "https://quanlydoanvien.vercel.app"
 }
