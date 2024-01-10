@@ -1,0 +1,1 @@
+import{n}from"./index-2b00a054.js";const d={getDonvis(t){const e="/don-vi/fetch";return n.get(e,{params:t})},addDonvi(t){const e="/don-vi/add";return n.post(e,t)},editDonvi(t){const e=`/don-vi/edit/${t.id_edit}`;return n.put(e,t)},deleteDonvi(t,e){const o=`/don-vi/delete/${t}`;return n.delete(o,{params:e})}};export{d};

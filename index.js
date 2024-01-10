@@ -16,7 +16,7 @@ app.use(function(req, res, next) {
   });
   
 app.use(cors({
-    origin: ["http://localhost:5173", "http://localhost:3000", "https://quanlydoanvien.vercel.app"],
+    origin: ["http://localhost:5173", "http://localhost:4000", "https://quanlydoanvien.vercel.app"],
     credentials: true,
     methods: ['GET', 'POST', "PUT", "DELETE"]
 }));
@@ -26,7 +26,7 @@ app.use(bodyParser.urlencoded({ extended: true, limit: '50mb'}));
 const port = process.env.port || 4000;
 
 
-const notificationRoute = require('./routes/notification');
+const notificationRoute = require('./routes/notification.js');
 const roleRoute = require('./routes/role');
 const bachamRoute = require('./routes/bacham');
 const chucvuRoute = require('./routes/chucvu');

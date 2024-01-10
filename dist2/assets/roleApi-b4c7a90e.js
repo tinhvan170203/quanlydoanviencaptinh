@@ -1,0 +1,1 @@
+import{n as t}from"./index-2b00a054.js";const n={getRoles(e){const r="/role/fetch";return t.get(r,{params:e})},addRole(e){const r="/role/add";return t.post(r,e)},editRole(e){const r=`/role/edit/${e.id_edit}`;return t.put(r,e)},deleteRole(e,r){const o=`/role/delete/${e}`;return t.delete(o,{params:r})}};export{n as r};

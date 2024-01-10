@@ -1,9 +1,9 @@
-import express from 'express';
+const express = require('express');
 
 const router = express.Router();
-import checkRole from '../middlewares/checkRole';
-import middlewareController from '../middlewares/verifyToken';
-import notification from '../controllers/notification';
+const checkRole = require('../middlewares/checkRole');
+const middlewareController = require('../middlewares/verifyToken');
+const notification = require('../controllers/notification');
 
 router.get('/fetch',middlewareController.verifyToken, notification.getNotifications);
 router.post('/add',middlewareController.verifyToken, checkRole("thêm thông báo"), notification.addNotification);
