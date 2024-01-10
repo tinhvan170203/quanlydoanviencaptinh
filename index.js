@@ -60,14 +60,12 @@ const path = require("path");
 const basePath = '';
 
 
-app.get('/', (req, res)=> {
-    res.send('hello')
-})
+
 // //cấu hình chạy reactjs trên node server
-app.use(basePath + "/", express.static(path.resolve(__dirname + "./dist")));
+app.use(basePath + "/", express.static(path.resolve(__dirname + "/dist")));
 
 app.get("*", (request, response) => {
-  response.sendFile(path.resolve(__dirname + "./dist/index.html"));
+  response.sendFile(path.resolve(__dirname + "/dist/index.html"));
 });
 app.listen(port, () => {
     console.log('server running ', port)
