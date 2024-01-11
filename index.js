@@ -16,9 +16,8 @@ app.use(function(req, res, next) {
   });
   
 app.use(cors({
-    origin: ["http://localhost:5173", "http://localhost:4000", "https://quanlydoanvien.vercel.app"],
+    origin: ["http://localhost:5173", "http://localhost:3000", "https://quanlydoanvienhungyen.vercel.app"],
     credentials: true,
-    methods: ['GET', 'POST', "PUT", "DELETE"]
 }));
 // app.use(express.json());
 app.use(bodyParser.json({limit: '50mb'}));
@@ -26,7 +25,7 @@ app.use(bodyParser.urlencoded({ extended: true, limit: '50mb'}));
 const port = process.env.port || 4000;
 
 
-const notificationRoute = require('./routes/notification.js');
+const notificationRoute = require('./routes/notification');
 const roleRoute = require('./routes/role');
 const bachamRoute = require('./routes/bacham');
 const chucvuRoute = require('./routes/chucvu');
@@ -59,10 +58,6 @@ app.use('/thong-ke', thongkeRoute);
 const path = require("path");
 const basePath = '';
 
-
-app.get('/', (req, res)=> {
-    res.send('hello')
-})
 // //cấu hình chạy reactjs trên node server
 app.use(basePath + "/", express.static(path.resolve(__dirname + "/dist")));
 
@@ -74,7 +69,7 @@ app.listen(port, () => {
 });
 
 mongoose.set('strictQuery', true);
-mongoose.connect("mongodb+srv://vuvantinh121123:vuvantinh1@cluster0.6h7gby9.mongodb.net/?retryWrites=true&w=majority",{
+mongoose.connect("mongodb://localhost:27017/quanlydoanvien",{
     useNewUrlParser: true,
     useUnifiedTopology: true
 }, (err) => {
@@ -83,7 +78,3 @@ mongoose.connect("mongodb+srv://vuvantinh121123:vuvantinh1@cluster0.6h7gby9.mong
     }
     console.log('kết nối db thành công')
 })
-
-
-// Export the Express API
-module.exports = app
