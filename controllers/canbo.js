@@ -68,6 +68,7 @@ module.exports = {
         quequan, CCCD, sohieuCAND,
         trangthai: "active",
         truongthanhdoan: false,
+        chuyencongtacngoaitinh: false,
         bacham: [
           {
             bacham: bacham,

@@ -5,13 +5,12 @@ const _ = require('lodash');
 module.exports = {
   login: async (req, res) => {
     try {
-      let data = await Users.find()
       let user = await Users.findOne({
         tentaikhoan: req.body.tentaikhoan,
         matkhau: req.body.matkhau,
       }).populate('roles');
       if (!user) {
-        return res.status(401).json({ status: false,data, message: "Sai tên đăng nhập hoặc mật khẩu" });
+        return res.status(401).json({ status: false, message: "Sai tên đăng nhập hoặc mật khẩu" });
       } else {
       //cần kiểm tra xem client có refreshtoken k nếu có thì phải kiểm tra db và xóa đi khi login thành công và tạo mới refreshtoken
       let refreshTokenCookie = req.cookies.refreshToken;
