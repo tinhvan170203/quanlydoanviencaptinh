@@ -15,7 +15,7 @@ const middlewareController = {
         next();
       });
     } else {
-      return res.status(401).json({message: "You are not authenticated k có token", token});
+      return res.status(401).json({message: "You are not authenticated k có token", token: req.headers.token});
     }
   },
 };
