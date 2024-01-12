@@ -15,7 +15,7 @@ app.use(cookies());
 //     next();
 //   });
 app.use(cors({
-    origin: ["https://quanlydoanvienhungyen.vercel.app"],
+    origin: ["https://quanlydoanvienhungyen.vercel.app","https://quanlydoanvien.vercel.app/thong-ke/bang-thi-dua-nam/fetch?year=2023&chidoans="],
     credentials: true,
 }));
 // app.use(express.json());
@@ -51,9 +51,7 @@ app.use('/can-bo', canboRoute);
 app.use('/khen-thuong', khenthuongRoute);
 app.use('/ki-luat', kiluatRoute);
 app.use('/thong-ke', thongkeRoute);
-// app.use('/api/mon-thi', monthiRoute);
-// app.use('/api/cau-hoi', cauhoiRoute);
-// app.use('/api', donviRoute);
+
 const path = require("path");
 const basePath = '';
 
