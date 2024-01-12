@@ -15,7 +15,7 @@ app.use(cookies());
 //     next();
 //   });
 app.use(cors({
-    origin: ["https://quanlydoanvienhungyen.vercel.app","https://quanlydoanvien.vercel.app/thong-ke/bang-thi-dua-nam/fetch?year=2023&chidoans="],
+    origin: ["https://quanlydoanvienhungyen.vercel.app","https://quanlydoanvienhungyen.vercel.app/dashboard/bao-cao/thi-dua-nam"],
     credentials: true,
 }));
 // app.use(express.json());
