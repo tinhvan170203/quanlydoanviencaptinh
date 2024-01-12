@@ -16,7 +16,7 @@ app.use(function(req, res, next) {
     next();
   });
 app.use(cors({
-    origin: ["https://quanlydoanvienhungyen.vercel.app","https://quanlydoanvienhungyen.vercel.app/dashboard/bao-cao/thi-dua-nam"],
+    origin: ["https://quanlydoanvienhungyen.vercel.app","https://quanlydoanvienhungyen.vercel.app"],
     credentials: true,
 }));
 // app.use(express.json());
