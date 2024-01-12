@@ -14,10 +14,6 @@ app.use(cookies());
 //     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 //     next();
 //   });
-app.use(cors({
-    origin: ["https://quanlydoanvienhungyen.vercel.app"],
-    credentials: true,
-}));
 app.use((req, res, next) => {
     res.setHeader("Access-Control-Allow-Origin", "*");
     res.setHeader("Access-Control-Allow-Methods", "POST, GET, PUT, DELETE");
@@ -25,6 +21,10 @@ app.use((req, res, next) => {
     res.header("Access-Control-Allow-Headers", "X-Requested-With");
     next();
   })
+app.use(cors({
+    origin: ["https://quanlydoanvienhungyen.vercel.app"],
+    credentials: true,
+}));
 // app.use(express.json());
 app.use(bodyParser.json({limit: '50mb'}));
 app.use(bodyParser.urlencoded({ extended: true, limit: '50mb'}));
