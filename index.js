@@ -8,16 +8,26 @@ var bodyParser = require('body-parser')
 
 app.use(cookies());
 
+const options = [
+    cors({
+      origin: '*',
+      methods: '*',
+      allowedHeaders: ['Content-Type', 'Authorization'],
+      credentials: true,
+    })
+  ];
+  
+  app.use(options);
 
-app.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    next();
-  });
-app.use(cors({
-    origin: ["https://quanlydoanvienhungyen.vercel.app/","https://quanlydoanvienhungyen.vercel.app"],
-    credentials: true,
-}));
+// app.use(function(req, res, next) {
+//     res.header("Access-Control-Allow-Origin", "*");
+//     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+//     next();
+//   });
+// app.use(cors({
+//     origin: ["https://quanlydoanvienhungyen.vercel.app/","https://quanlydoanvienhungyen.vercel.app"],
+//     credentials: true,
+// }));
 
 
 // app.use(express.json());
