@@ -15,7 +15,7 @@ app.use(function(req, res, next) {
     next();
   });
 app.use(cors({
-    origin: ["https://quanlydoanvienhungyen.vercel.app","https://quanlydoanvienhungyen.vercel.app"],
+    origin: ["https://quanlydoanvienhungyen.vercel.app/","https://quanlydoanvienhungyen.vercel.app"],
     credentials: true,
 }));
 // app.use(express.json());
