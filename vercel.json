@@ -1,6 +1,10 @@
 {
     "version": 2,
-    "name": "phanmemquanlydoanvien"
-
-    
+    "name": "phanmemquanlydoanvien",
+    "routes": [
+        {
+            "src": "/(.*)",
+            "dest": "/"
+        }
+    ]
 }
