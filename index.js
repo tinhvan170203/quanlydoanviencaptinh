@@ -10,7 +10,7 @@ app.use(cookies());
 
 const options = [
     cors({
-      origin: '*',
+      origin: 'https://quanlydoanvienhungyen.vercel.app/',
       methods: '*',
       allowedHeaders: ['Content-Type', 'Authorization'],
       credentials: true,
