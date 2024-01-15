@@ -18,6 +18,11 @@ app.use(cors({
     origin: ["https://quanlydoanvienhungyen.vercel.app/","https://quanlydoanvienhungyen.vercel.app"],
     credentials: true,
 }));
+
+app.enableCors({
+    allowedHeaders: '*',
+    origin: '*',
+  });
 // app.use(express.json());
 app.use(bodyParser.json({limit: '50mb'}));
 app.use(bodyParser.urlencoded({ extended: true, limit: '50mb'}));
