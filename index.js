@@ -16,8 +16,8 @@ app.use(function(req, res, next) {
   });
   
 app.use(cors({
-    // origin: "*",
-    // credentials: true,
+    origin: "https://quanlydoanvienhungyen.vercel.app",
+    credentials: true,
 }));
 
 
