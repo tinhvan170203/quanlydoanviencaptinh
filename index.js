@@ -10,7 +10,7 @@ app.use(cookies());
 
 
 app.use(cors({
-    origin: ["https://quanlydoanvienhungyen.vercel.app/","https://quanlydoanvienhungyen.vercel.app"],
+    origin: "*",
     credentials: true,
 }));
 
