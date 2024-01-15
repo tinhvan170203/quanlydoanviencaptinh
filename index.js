@@ -9,17 +9,16 @@ var bodyParser = require('body-parser')
 app.use(cookies());
 
 
-
-app.use(function(req, res, next) {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Methods', '*');
-    res.setHeader('Access-Control-Allow-Headers', '*');
-    res.setHeader('Access-Control-Allow-Credentials', 'true');
-  });
 app.use(cors({
     origin: ["https://quanlydoanvienhungyen.vercel.app/","https://quanlydoanvienhungyen.vercel.app"],
     credentials: true,
 }));
+
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+  });
 
 
 // app.use(express.json());
