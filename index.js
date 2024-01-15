@@ -10,7 +10,7 @@ app.use(cookies());
 
 
 app.use(cors({
-    origin: "*",
+    // origin: "*",
     credentials: true,
 }));
 
