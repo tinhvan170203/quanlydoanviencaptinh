@@ -449,7 +449,7 @@ module.exports = {
 
         for (let i of doanvienOfDonvi) {
           let findWithTimeNumber = i.donvi.filter(e => e.timeNumber <= toTimeNumber).sort((a, b) => b.timeNumber - a.timeNumber);
-          if(findWithTimeNumber.length < 0)return;
+          if(findWithTimeNumber.length === 0)return;
 
           let checked = findWithTimeNumber[findWithTimeNumber.length - 1].donviString === donvi._id.toString();
           if (!checked) return;
@@ -660,7 +660,7 @@ module.exports = {
 
         for (let i of doanvienOfDonvi) {
           let findWithTimeNumber = i.donvi.filter(e => e.timeNumber <= toTimeNumber).sort((a, b) => b.timeNumber - a.timeNumber);
-          if(findWithTimeNumber.length < 0)return;
+          if(findWithTimeNumber.length === 0) return;
 
           let checked = findWithTimeNumber[findWithTimeNumber.length - 1].donviString === donvi._id.toString();
           if (!checked) return;
