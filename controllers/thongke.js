@@ -527,15 +527,17 @@ module.exports = {
       for (let donvi of donvis) {
         let doanvienOfDonvi = await Canbos.find({
           "donvi.donviString": donvi._id,
-          "donvi.timeNumber": {
-            $lte: toTimeNumber
-          },
+          // "donvi.timeNumber": {
+          //   $lte: toTimeNumber
+          // },
           trangthai: "active",
          hoten: { $regex: hoten, $options: "i" },
         }, { hoten: 1, donvi: 1,  thiduanam: 1 }).populate('donvi.donvi');
 
         for (let i of doanvienOfDonvi) {
           let findWithTimeNumber = i.donvi.filter(e => e.timeNumber <= toTimeNumber).sort((a, b) => b.timeNumber - a.timeNumber);
+          if(findWithTimeNumber.length === 0) return;
+          
           let checked = findWithTimeNumber[findWithTimeNumber.length - 1].donviString === donvi._id.toString();
           if (!checked) return;
 
@@ -660,7 +662,7 @@ module.exports = {
 
         for (let i of doanvienOfDonvi) {
           let findWithTimeNumber = i.donvi.filter(e => e.timeNumber <= toTimeNumber).sort((a, b) => b.timeNumber - a.timeNumber);
-          // if(findWithTimeNumber.length === 0) return;
+          if(findWithTimeNumber.length === 0) return;
 
           let checked = findWithTimeNumber[findWithTimeNumber.length - 1].donviString === donvi._id.toString();
           if (!checked) return;
