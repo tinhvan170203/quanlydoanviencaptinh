@@ -441,16 +441,14 @@ module.exports = {
       for (let donvi of donvis) {
         let doanvienOfDonvi = await Canbos.find({
           "donvi.donviString": donvi._id,
-          // "donvi.timeNumber": {
-          //   $lte: toTimeNumber
-          // },
+          "donvi.timeNumber": {
+            $lte: toTimeNumber
+          },
           trangthai: "active",
         }, { hoten: 1, donvi: 1,ngaysinh: 1, thiduathang: 1 }).populate('donvi.donvi');
 
         for (let i of doanvienOfDonvi) {
           let findWithTimeNumber = i.donvi.filter(e => e.timeNumber <= toTimeNumber).sort((a, b) => b.timeNumber - a.timeNumber);
-          // if(findWithTimeNumber.length === 0)return;
-
           let checked = findWithTimeNumber[findWithTimeNumber.length - 1].donviString === donvi._id.toString();
           if (!checked) return;
 
@@ -527,17 +525,15 @@ module.exports = {
       for (let donvi of donvis) {
         let doanvienOfDonvi = await Canbos.find({
           "donvi.donviString": donvi._id,
-          // "donvi.timeNumber": {
-          //   $lte: toTimeNumber
-          // },
+          "donvi.timeNumber": {
+            $lte: toTimeNumber
+          },
           trangthai: "active",
          hoten: { $regex: hoten, $options: "i" },
         }, { hoten: 1, donvi: 1,  thiduanam: 1 }).populate('donvi.donvi');
 
         for (let i of doanvienOfDonvi) {
           let findWithTimeNumber = i.donvi.filter(e => e.timeNumber <= toTimeNumber).sort((a, b) => b.timeNumber - a.timeNumber);
-          if(findWithTimeNumber.length === 0) return;
-          
           let checked = findWithTimeNumber[findWithTimeNumber.length - 1].donviString === donvi._id.toString();
           if (!checked) return;
 
@@ -654,16 +650,14 @@ module.exports = {
       for (let donvi of donvis) {
         let doanvienOfDonvi = await Canbos.find({
           "donvi.donviString": donvi._id,
-          // "donvi.timeNumber": {
-          //   $lte: toTimeNumber
-          // },
+          "donvi.timeNumber": {
+            $lte: toTimeNumber
+          },
           trangthai: "active",
         }, { hoten: 1, donvi: 1, ngaysinh: 1, thiduanam: 1 }).populate('donvi.donvi');
 
         for (let i of doanvienOfDonvi) {
           let findWithTimeNumber = i.donvi.filter(e => e.timeNumber <= toTimeNumber).sort((a, b) => b.timeNumber - a.timeNumber);
-          if(findWithTimeNumber.length === 0) return;
-
           let checked = findWithTimeNumber[findWithTimeNumber.length - 1].donviString === donvi._id.toString();
           if (!checked) return;
 
@@ -695,7 +689,8 @@ module.exports = {
       console.log("lỗi: ", error.message);
       res.status(401).json({
         status: "failed",
-        message:error.message
+        message:
+          "Có lỗi xảy ra khi điều chỉnh bậc hàm cán bộ. Vui lòng liên hệ quản trị hệ thống.",
       });
     }
   },
