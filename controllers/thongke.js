@@ -441,27 +441,23 @@ module.exports = {
       for (let donvi of donvis) {
         let doanvienOfDonvi = await Canbos.find({
           "donvi.donviString": donvi._id,
-          "donvi.timeNumber": {
-            $lte: toTimeNumber
-          },
+          // "donvi.timeNumber": {
+          //   $lte: toTimeNumber
+          // },
           trangthai: "active",
         }, { hoten: 1, donvi: 1,ngaysinh: 1, thiduathang: 1 }).populate('donvi.donvi');
 
         for (let i of doanvienOfDonvi) {
-          let resultThiduathang = [];
-
           let findWithTimeNumber = i.donvi.filter(e => e.timeNumber <= toTimeNumber).sort((a, b) => b.timeNumber - a.timeNumber);
-          // let checked = findWithTimeNumber[findWithTimeNumber.length - 1].donviString === donvi._id.toString();
-          // if (!checked){
-          //   return;
-          // } 
-            
+          let checked = findWithTimeNumber[findWithTimeNumber.length - 1].donviString === donvi._id.toString();
+          if (!checked) return;
 
           let thiduathang = i.thiduathang.filter(e=>{
             let compare = new Date(e.thoigian).getTime();
             return fromTimeNumber <= compare && toTimeNumber >= compare
           });
           //vòng lặp 12 tháng trong năm để lấy ra xếp loại từng tháng
+          let resultThiduathang = [];
           for(let month = 1; month <=12; month++){
             let index = thiduathang.findIndex(item => item.thoigian === `${year}-`+`${String("0" + month).slice(-2)}-15`);
             if(index === -1){ // TH chưa có thi đua tháng trong năm đó
@@ -654,16 +650,16 @@ module.exports = {
       for (let donvi of donvis) {
         let doanvienOfDonvi = await Canbos.find({
           "donvi.donviString": donvi._id,
-          "donvi.timeNumber": {
-            $lte: toTimeNumber
-          },
+          // "donvi.timeNumber": {
+          //   $lte: toTimeNumber
+          // },
           trangthai: "active",
         }, { hoten: 1, donvi: 1, ngaysinh: 1, thiduanam: 1 }).populate('donvi.donvi');
 
         for (let i of doanvienOfDonvi) {
-          // let findWithTimeNumber = i.donvi.filter(e => e.timeNumber <= toTimeNumber).sort((a, b) => b.timeNumber - a.timeNumber);
-          // let checked = findWithTimeNumber[findWithTimeNumber.length - 1].donviString === donvi._id.toString();
-          // if (!checked) return;
+          let findWithTimeNumber = i.donvi.filter(e => e.timeNumber <= toTimeNumber).sort((a, b) => b.timeNumber - a.timeNumber);
+          let checked = findWithTimeNumber[findWithTimeNumber.length - 1].donviString === donvi._id.toString();
+          if (!checked) return;
 
           let findYear = i.thiduanam.find(e =>e.thoigian.includes(year)); 
           if(findYear){
