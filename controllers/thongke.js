@@ -689,8 +689,7 @@ module.exports = {
       console.log("lỗi: ", error.message);
       res.status(401).json({
         status: "failed",
-        message:
-          "Có lỗi xảy ra khi điều chỉnh bậc hàm cán bộ. Vui lòng liên hệ quản trị hệ thống.",
+        message:error.message
       });
     }
   },
