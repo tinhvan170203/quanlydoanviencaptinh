@@ -1110,108 +1110,120 @@ module.exports = {
     let id = req.params.id;
 
     try {
-      let doanvien = await Canbos.aggregate([
-        {
-          $project: {
-            donvi: {
-              $arrayElemAt: [
-                "$donvi",
-                {
-                  $indexOfArray: [
-                    "$donvi.timeNumber", // tra ve array chi chua cac timeNumber
-                    { $max: "$donvi.timeNumber" }, // laasy ra max timenumer
-                  ],
-                },
-              ],
-            },
-            bacham: {
-              $arrayElemAt: [
-                "$bacham",
-                {
-                  $indexOfArray: [
-                    "$bacham.timeNumber",
-                    { $max: "$bacham.timeNumber" },
-                  ],
-                },
-              ],
-            },
-            chucvu: {
-              $arrayElemAt: [
-                "$chucvu",
-                {
-                  $indexOfArray: [
-                    "$chucvu.timeNumber",
-                    { $max: "$chucvu.timeNumber" },
-                  ],
-                },
-              ],
-            },
-            hoten: 1,
-            CCCD: 1,
-            sohieuCAND: 1,
-            trangthai: 1,
-            quequan: 1,
-            trinhdo: 1,
-            gioitinh: 1,
-            dangvien: 1,
-            ngayvaodang: 1,
-            ngaysinh: 1,
-            lyluanchinhtri: 1,
-            truongthanhdoan: 1,
-            ngaytruongthanhdoan: 1,
-            thiduanam: 1,
-            thiduathang: 1,
-            donvidiaphuongkhac: 1,
-            chuyencongtacngoaitinh: 1,
-            _id: 1
-          },
-        },
-        {
-          $match: {
-            _id: ObjectId(id)
-          },
-        },
-        {
-          $lookup: {
-            from: "bachams",
-            localField: "bacham.bacham",
-            foreignField: "_id",
-            as: "bachamPopulate",
-          },
-        },
-        {
-          $lookup: {
-            from: "chucvus",
-            localField: "chucvu.chucvu",
-            foreignField: "_id",
-            as: "chucvuPopulate",
-          },
-        },
-        {
-          $lookup: {
-            from: "donvis",
-            localField: "donvi.donvi",
-            foreignField: "_id",
-            as: "donviPopulate",
-          },
-        },
-        {
-          $lookup: {
-            from: "dois",
-            localField: "donvi.doi",
-            foreignField: "_id",
-            as: "doiPopulate",
-          },
-        },
-        {
-          $lookup: {
-            from: "donvis",
-            localField: "donvidiaphuongkhac",
-            foreignField: "_id",
-            as: "donvidiaphuongkhac",
-          },
-        },
-      ]);
+      // let doanvien = await Canbos.aggregate([
+      //   {
+      //     $project: {
+      //       donvis: {
+      //         $arrayElemAt: [
+      //           "$donvi",
+      //           {
+      //             $indexOfArray: [
+      //               "$donvi.timeNumber", // tra ve array chi chua cac timeNumber
+      //               { $max: "$donvi.timeNumber" }, // laasy ra max timenumer
+      //             ],
+      //           },
+      //         ],
+      //       },
+      //       bachams: {
+      //         $arrayElemAt: [
+      //           "$bacham",
+      //           {
+      //             $indexOfArray: [
+      //               "$bacham.timeNumber",
+      //               { $max: "$bacham.timeNumber" },
+      //             ],
+      //           },
+      //         ],
+      //       },
+      //       chucvus: {
+      //         $arrayElemAt: [
+      //           "$chucvu",
+      //           {
+      //             $indexOfArray: [
+      //               "$chucvu.timeNumber",
+      //               { $max: "$chucvu.timeNumber" },
+      //             ],
+      //           },
+      //         ],
+      //       },
+      //       hoten: 1,
+      //       CCCD: 1,
+      //       sohieuCAND: 1,
+      //       trangthai: 1,
+      //       quequan: 1,
+      //       trinhdo: 1,
+      //       gioitinh: 1,
+      //       dangvien: 1,
+      //       ngayvaodang: 1,
+      //       ngaysinh: 1,
+      //       lyluanchinhtri: 1,
+      //       truongthanhdoan: 1,
+      //       ngaytruongthanhdoan: 1,
+      //       thiduanam: 1,
+      //       thiduathang: 1,
+      //       donvidiaphuongkhac: 1,
+      //       chuyencongtacngoaitinh: 1,
+      //       donvi: 1,
+      //       chucvu: 1,
+      //       bacham: 1,
+      //       _id: 1
+      //     },
+      //   },
+      //   {
+      //     $match: {
+      //       _id: ObjectId(id)
+      //     },
+      //   },
+      //   {
+      //     $lookup: {
+      //       from: "bachams",
+      //       localField: "bachams.bacham",
+      //       foreignField: "_id",
+      //       as: "bachamPopulate",
+      //     },
+      //   },
+      //   {
+      //     $lookup: {
+      //       from: "chucvus",
+      //       localField: "chucvus.chucvu",
+      //       foreignField: "_id",
+      //       as: "chucvuPopulate",
+      //     },
+      //   },
+      //   {
+      //     $lookup: {
+      //       from: "donvis",
+      //       localField: "donvis.donvi",
+      //       foreignField: "_id",
+      //       as: "donviPopulate",
+      //     },
+      //   },
+      //   {
+      //     $lookup: {
+      //       from: "dois",
+      //       localField: "donvis.doi",
+      //       foreignField: "_id",
+      //       as: "doiPopulate",
+      //     },
+      //   },
+      //   {
+      //     $lookup: {
+      //       from: "donvis",
+      //       localField: "donvidiaphuongkhac",
+      //       foreignField: "_id",
+      //       as: "donvidiaphuongkhac",
+      //     },
+      //   },
+      //   {
+      //     $lookup: {
+      //       from: "donvis",
+      //       localField: "donvi.donvi",
+      //       foreignField: "_id",
+      //       as: "donvi",
+      //     },
+      //   },
+      // ]);
+      let doanvien = await Canbos.find({_id: id}).populate('donvidiaphuongkhac').populate("donvi.donvi").populate('bacham.bacham').populate("chucvu.chucvu")
 
       let khenthuongs = await Khenthuongcanhan.find({ canhanduockhenthuong: id }).sort({ ngayky: 1 });
       let kiluats = await Kiluatcanhan.find({ canhanbikiluat: id }).sort({ ngayky: 1 });
@@ -1266,9 +1278,17 @@ module.exports = {
           resultThiduathang,
           thiduanam
         })
-      }
+      };
 
-      res.status(200).json({ doanvien, khenthuongs, kiluats, thiduas })
+      let bachamPopulate = [doanvien[0].bacham.sort((a, b) => b.timeNumber - a.timeNumber)[0].bacham];
+      let chucvuPopulate = [doanvien[0].chucvu.sort((a, b) => b.timeNumber - a.timeNumber)[0].chucvu];
+      let donviPopulate = [doanvien[0].donvi.sort((a, b) => b.timeNumber - a.timeNumber)[0].donvi];
+      let quatrinhcongtac = doanvien[0].donvi.sort((a, b) => a.timeNumber - b.timeNumber);
+      let quatrinhlenham = doanvien[0].bacham.sort((a, b) => a.timeNumber - b.timeNumber);
+      let quatrinhchucvu = doanvien[0].chucvu.sort((a, b) => a.timeNumber - b.timeNumber);
+      doanvien = [{...doanvien[0]._doc, bachamPopulate, chucvuPopulate, donviPopulate}]
+
+      res.status(200).json({ doanvien, khenthuongs, kiluats, thiduas, quatrinhcongtac, quatrinhlenham, quatrinhchucvu })
     } catch (error) {
       console.log("lỗi: ", error.message);
       res.status(401).json({
