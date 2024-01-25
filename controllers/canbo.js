@@ -1225,8 +1225,8 @@ module.exports = {
       // ]);
       let doanvien = await Canbos.find({_id: id}).populate('donvidiaphuongkhac').populate("donvi.donvi").populate('bacham.bacham').populate("chucvu.chucvu")
 
-      let khenthuongs = await Khenthuongcanhan.find({ canhanduockhenthuong: id }).sort({ ngayky: 1 });
-      let kiluats = await Kiluatcanhan.find({ canhanbikiluat: id }).sort({ ngayky: 1 });
+      let khenthuongs = await Khenthuongcanhan.find({ canhanduockhenthuong: id }).sort({ ngayky: -1 });
+      let kiluats = await Kiluatcanhan.find({ canhanbikiluat: id }).sort({ ngayky: -1 });
    
       let thiduas = [];
       
